@@ -31,7 +31,7 @@ jobs:
           echo test, and deploy your project.
 
       # Runs a set of commands using the runners shell
-#      - name: build
-#        uses: matankdr/github-docker-sbt@JDK8-SBT1.3.8
-#        with:
-#          command: sbt war
+      - name: build
+        uses: matankdr/github-docker-sbt@JDK8-SBT1.3.8
+        with:
+          command: sbt war
