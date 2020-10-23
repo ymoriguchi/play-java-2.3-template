@@ -29,13 +29,6 @@ jobs:
           key: ${{ runner.os }}-sbt-ivy-cache-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-sbt-ivy-cache-
-      - name: Cache Coursier cache
-        uses: actions/cache@v1
-        with:
-          path: ~/.cache/coursier
-          key: ${{ runner.os }}-sbt-coursier-cache-${{ github.run_id }}
-          restore-keys: |
-            ${{ runner.os }}-sbt-coursier-cache-
       - name: Cache SBT
         uses: actions/cache@v1
         with:
@@ -43,10 +36,4 @@ jobs:
           key: ${{ runner.os }}-sbt-cache-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-sbt-cache-
-      - run: sbt exit
-
-      # Runs a set of commands using the runners shell
-#       - name: build
-#         uses: matankdr/github-docker-sbt@JDK8-SBT1.3.8
-#         with:
-#           command: sbt war
+      - run: sbt war
