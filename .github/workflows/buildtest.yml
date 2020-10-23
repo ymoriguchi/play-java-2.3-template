@@ -38,6 +38,8 @@ jobs:
 #             ${{ runner.os }}-sbt-cache-
 #       - run: sbt war
       - run: ls -la
+      - run: docker ps
+      - run: docker images
         
 
 
