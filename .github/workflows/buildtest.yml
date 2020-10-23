@@ -37,10 +37,18 @@ jobs:
 #           restore-keys: |
 #             ${{ runner.os }}-sbt-cache-
 #       - run: sbt war
-      - run: ls -la
-      - run: docker ps
-      - run: docker images
-        
+      - run: |
+          ls -la
+          docker ps
+          docker images
+          cat - << EOS > Dockerfile
+          FROM amazonlinux:2
+          RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo \
+              && yum -y install java-1.8.0-openjdk-devel sbt
+          CMD ["bash"]
+          EOS
+          docker build --force-rm -t sample .
+          docker images
 
 
 
