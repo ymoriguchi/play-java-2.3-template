@@ -36,15 +36,11 @@ jobs:
 #           key: ${{ runner.os }}-sbt-cache-${{ github.run_id }}
 #           restore-keys: |
 #             ${{ runner.os }}-sbt-cache-
-#       - run: sbt war
-      - run: |
-          cat - << EOS > Dockerfile
-          FROM tomcat:8.5.59-jdk8-openjdk-slim-buster
-          COPY ./README /var/
-          CMD ["bash"]
-          EOS
-          docker build --force-rm -t sample2 .
-          docker images
+#       - run: |
+#           sbt war
+#           docker pull tomcat:8.5.59-jdk8-openjdk-slim-buster
+#           docker run --name work -it -v=$(pwd):/opt tomcat:8.5.59-jdk8-openjdk-slim-buster bash -c 'cp /opt/target/*.war ./webapps/ROOT.war'
+#           docker commit work ecr_image
 
 
 
