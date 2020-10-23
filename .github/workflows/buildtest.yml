@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - run: ls
+      - run: sbt --help
 
       # Runs a set of commands using the runners shell
 #       - name: build
